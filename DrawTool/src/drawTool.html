@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DrawTool</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body onload="init()">
+		<div class = "buttons">
+			<div class = "switchButtons" id = "plus" onclick="switchOp(this)">+</div>
+			<div class = "switchButtons" id = "minus" onclick="switchOp(this)">-</div>
+			<div class = "switchButtons" id = "multiply" onclick="switchOp(this)">×</div>
+			<div class = "switchButtons" id = "divide" onclick="switchOp(this)">÷</div>
+			<div class = "switchButtons" id = "slash" onclick="switchOp(this)">/</div>
+		</div>
+		<p id="label">Please Select an Operation to Draw</p>
+		<div class="field">
+			<canvas id="mathSymbol" width="32" height="32"></canvas>
+			<div class="tools">
+				<button id = "undoBtn" onclick="remove()">Undo</button>
+				<button id = "clearBtn" onclick="erase()">Clear</button>
+				<button id = "saveBtn" onclick="save()">Save</button>
+				<button id = "downloadBtn" onclick="download()">Download</button>
+			</div>
+		</div>
+		<script src="modules/jszip.min.js"></script>
+		<script src="main.js"></script>
+		<div id = "images">
+		</div>
+	</body>
+</html>
