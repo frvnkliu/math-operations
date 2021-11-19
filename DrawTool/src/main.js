@@ -3,12 +3,12 @@ var zip = new JSZip();
 var photoZip = zip.folder("math-operation-images");
 var press = false;
 var type = -1;
-var ctx, canvas, x, y, preview, img, images, photoCount;
+var typen = -1;
+var ctx, canvas, x, y, preview, img, images, countLabel;
+var count = [0,0,0,0,0];
 function init() {
-	var coordinate = document.getElementById("coord");
-	var oldcoordinate = document.getElementById("oldcoord");
 	var label = document.getElementById("label");
-	preview = document.getElementById("images");
+	countLabel = document.getElementById("count");
 	canvas = document.getElementById("mathSymbol");
 	ctx = canvas.getContext("2d");
 	ctx.strokeStyle = "white";
@@ -17,11 +17,6 @@ function init() {
 	ctx.fillStyle = "black";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 	photoCount = 0;
-	photoZip.folder("plus");
-	photoZip.folder("minus");
-	photoZip.folder("multiply");
-	photoZip.folder("divide");
-	photoZip.folder("slash");
 
 	canvas.addEventListener("mousedown", function(event){
 		press = true;
@@ -77,44 +72,47 @@ function save(){
 	if(type==-1){
 		alert("Please Select an Operation First");
 	}else{
-		photoZip.folder(type).file(type+photoCount,img);
+		photoZip.folder(type).file(`${type}${count[typen]++}.png`,img.split('base64')[1],{base64:true});
+		updateCount();
 		erase();
 	}
 }
 
 function download(){
-	var link = document.createElement('a');
-  	link.download = type + 'operation';
-  	link.href = photoZip.toDataURL();
-  	link.click();
+	zip.generateAsync({type:"blob"}).then(function (blob) {
+		saveAs(blob, "photos.zip");
+	}, function (err) {
+        jQuery("#blob").text(err);
+    });
 }
-
-function remove(){
-
+function updateCount(){
+	countLabel.innerHTML = count[typen] + " images";
 }
 function switchOp(button){
-	switch(button.id){
+	type = button.id;
+	switch(type){
 		case "plus":
-			type = 0;
+			typen = 0;
 			label.innerHTML = "plus (+)";
 			break;
 		case "minus":
-			type = 1;
+			typen = 1;
 			label.innerHTML = "minus (-)";
 			break;
 		case "multiply":
-			type = 2;
+			typen = 2;
 			label.innerHTML = "multiply (×)";
 			break;
 		case "divide":
-			type = 3;
+			typen = 3;
 			label.innerHTML = "divide (÷)";
 			break;
 		case "slash":
-			type = 4;
+			typen = 4;
 			label.innerHTML = "slash (/)";
 			break;
 	}
+	updateCount();
 	erase();
 
 }

@@ -1,5 +1,5 @@
 :root {}
-#label{
+.title{
 	color: white;
 	text-align: center;
 }
@@ -23,7 +23,7 @@ body{
 	margin: 0px;
 	padding:  20px;
 	font-family:  "Helvetica";
-	overflow; hidden;
+	overflow: hidden;
 	background: #202020;
 	/*background: #313131;*/
 }
