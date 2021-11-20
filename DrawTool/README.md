@@ -5,7 +5,7 @@ Uses HTML Canvas to render images, and implement user drawing.
 Uses Javascript libraries JSZip and FileSaver in order to export a zip of the photos.
 <br>Exports a folder with the following format:
 <br>  math-operations-images
-<br>      >divide
+<br>&nbsp;      >divide
 <br>          divide0_?.png
 <br>          divide1_?.png
 <br>          divide2_?.png
