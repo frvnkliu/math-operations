@@ -15,7 +15,7 @@ Uses Javascript libraries JSZip and FileSaver in order to export a zip of the ph
 <br>&emsp;&emsp;      >plus
 <br>&emsp;&emsp;      >slash
       
-? - a randomly generated number between 0-100000000 to avoid naming conflicts
+? - a randomly generated 8-digit integer to avoid naming conflicts
 <br>An operation folder (e.g. minus, multiply, plus) is only created if there are images of them
 <br><br>
 Preview:
