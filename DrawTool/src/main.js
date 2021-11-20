@@ -4,7 +4,7 @@ var photoZip = zip.folder("math-operation-images");
 var press = false;
 var type = -1;
 var typen = -1;
-var ctx, canvas, x, y, preview, img, images, countLabel;
+var ctx, canvas, x, y, preview, img, images, countLabel, rand;
 var count = [0,0,0,0,0];
 function init() {
 	var label = document.getElementById("label");
@@ -16,6 +16,7 @@ function init() {
 	ctx.lineCap = "round";
 	ctx.fillStyle = "black";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	rand = ((Math.floor(Math.random()*100000000))+"").padStart(8,"0");
 	photoCount = 0;
 
 	canvas.addEventListener("mousedown", function(event){
@@ -72,7 +73,7 @@ function save(){
 	if(type==-1){
 		alert("Please Select an Operation First");
 	}else{
-		photoZip.folder(type).file(`${type}${count[typen]++}.png`,img.split('base64')[1],{base64:true});
+		photoZip.folder(type).file(`${type}${count[typen]++}_${rand}.png`,img.split('base64')[1],{base64:true});
 		updateCount();
 		erase();
 	}
