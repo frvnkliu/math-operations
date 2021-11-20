@@ -15,6 +15,6 @@ Exports a folder with the following format:
       >plus
       >slash
       
-? - a randomly generated number between 0-100000000
+? - a randomly generated number between 0-100000000 to avoid naming conflicts
 An operation folder (e.g. minus, multiply, plus) is only created if there are images of them
 
